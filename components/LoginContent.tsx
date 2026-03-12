@@ -18,16 +18,41 @@ export default function LoginContent() {
     password: "",
   })
 
+  // 👇 BACKEND URL - environment variable se
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://pakchat-backend.onrender.com'
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // 👇 REAL API CALL
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Login failed')
+      }
+
+      // ✅ Save token
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('user', JSON.stringify(data.user))
+
       toast.success("Login successful!")
       router.push("/chat")
+      
     } catch (error) {
-      toast.error("Login failed. Please try again.")
+      toast.error(error instanceof Error ? error.message : "Login failed. Please try again.")
     } finally {
       setIsLoading(false)
     }
@@ -62,6 +87,7 @@ export default function LoginContent() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
+              disabled={isLoading}
             />
           </div>
         </div>
@@ -78,6 +104,7 @@ export default function LoginContent() {
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               required
+              disabled={isLoading}
             />
           </div>
         </div>
@@ -88,9 +115,22 @@ export default function LoginContent() {
           </Link>
         </div>
 
-        <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600" disabled={isLoading}>
-          {isLoading ? "Signing in..." : "Sign In"}
-          {!isLoading && <ArrowRight className="ml-2 w-4 h-4" />}
+        <Button 
+          type="submit" 
+          className="w-full bg-gradient-to-r from-blue-600 to-purple-600" 
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+              Signing in...
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              Sign In
+              <ArrowRight className="ml-2 w-4 h-4" />
+            </div>
+          )}
         </Button>
       </form>
 
