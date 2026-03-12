@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import LoginContent from "@/components/LoginContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const LoginContent = dynamic(
+  () => import('@/components/LoginContent'),
+  { ssr: false }
+)
 
 export default function LoginPage() {
-  return (
-    <ClientOnly>
-      <LoginContent />
-    </ClientOnly>
-  )
+  return <LoginContent />
 }

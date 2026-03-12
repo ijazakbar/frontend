@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import ResearchContent from "@/components/ResearchContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const ResearchContent = dynamic(
+  () => import('@/components/ResearchContent'),
+  { ssr: false }
+)
 
 export default function ResearchPage() {
-  return (
-    <ClientOnly>
-      <ResearchContent />
-    </ClientOnly>
-  )
+  return <ResearchContent />
 }

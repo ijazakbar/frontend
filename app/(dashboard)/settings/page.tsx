@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import SettingsContent from "@/components/SettingsContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const SettingsContent = dynamic(
+  () => import('@/components/SettingsContent'),
+  { ssr: false }
+)
 
 export default function SettingsPage() {
-  return (
-    <ClientOnly>
-      <SettingsContent />
-    </ClientOnly>
-  )
+  return <SettingsContent />
 }

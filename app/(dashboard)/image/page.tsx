@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import ImageContent from "@/components/ImageContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const ImageContent = dynamic(
+  () => import('@/components/ImageContent'),
+  { ssr: false }
+)
 
 export default function ImagePage() {
-  return (
-    <ClientOnly>
-      <ImageContent />
-    </ClientOnly>
-  )
+  return <ImageContent />
 }

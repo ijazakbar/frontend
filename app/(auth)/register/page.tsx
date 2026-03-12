@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import RegisterContent from "@/components/RegisterContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const RegisterContent = dynamic(
+  () => import('@/components/RegisterContent'),
+  { ssr: false }
+)
 
 export default function RegisterPage() {
-  return (
-    <ClientOnly>
-      <RegisterContent />
-    </ClientOnly>
-  )
+  return <RegisterContent />
 }

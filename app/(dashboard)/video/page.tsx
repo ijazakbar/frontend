@@ -1,12 +1,10 @@
-import ClientOnly from "@/components/ClientOnly"
-import VideoContent from "@/components/VideoContent"
+import dynamic from 'next/dynamic'
 
-export const dynamic = 'force-dynamic'
+const VideoContent = dynamic(
+  () => import('@/components/VideoContent'),
+  { ssr: false }
+)
 
 export default function VideoPage() {
-  return (
-    <ClientOnly>
-      <VideoContent />
-    </ClientOnly>
-  )
+  return <VideoContent />
 }
