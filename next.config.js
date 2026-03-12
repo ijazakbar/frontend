@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ... existing config
-  typescript: {
-    ignoreBuildErrors: true,  // Temp fix for build
+  output: 'export',  // 👈 YEH MAGICAL LINE HAI
+  images: {
+    unoptimized: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,  // Temp fix for build
-  },
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
 }
 
 module.exports = nextConfig
