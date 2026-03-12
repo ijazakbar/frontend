@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",  // 👈 Yeh change karo
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',

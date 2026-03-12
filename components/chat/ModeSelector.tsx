@@ -3,12 +3,16 @@ import { MessageSquare, BookOpen, Code, Languages } from "lucide-react"
 
 interface ModeSelectorProps {
   value: string
-  onChange: (value: string) => void
+  onChange: (value: string) => void  // Yeh theek hai
 }
 
 export function ModeSelector({ value, onChange }: ModeSelectorProps) {
   return (
-    <Tabs value={value} onValueChange={onChange} className="w-full">
+    <Tabs 
+      value={value} 
+      onValueChange={onChange}  // 👈 onChange ko onValueChange mein map karo
+      className="w-full"
+    >
       <TabsList className="grid w-full grid-cols-4">
         <TabsTrigger value="chat" className="flex items-center gap-2">
           <MessageSquare className="w-4 h-4" />

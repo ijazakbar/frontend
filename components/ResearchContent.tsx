@@ -44,7 +44,7 @@ export default function ResearchContent() {
           </Button>
         </div>
 
-        <Tabs defaultValue="all" className="mb-8">
+        <Tabs value="web" onValueChange={() => {}} className="w-full">
           <TabsList>
             <TabsTrigger value="all">All Sources</TabsTrigger>
             <TabsTrigger value="wikipedia">Wikipedia</TabsTrigger>

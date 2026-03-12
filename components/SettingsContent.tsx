@@ -33,7 +33,7 @@ export default function SettingsContent() {
           Customize your PakChat experience
         </p>
 
-        <Tabs defaultValue="general" className="mb-8">
+        <Tabs value="general" onValueChange={() => {}} className="w-full">
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="general">General</TabsTrigger>
             <TabsTrigger value="appearance">Appearance</TabsTrigger>

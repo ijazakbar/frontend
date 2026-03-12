@@ -73,7 +73,7 @@ export default function VoiceContent() {
           Speech-to-text and text-to-speech with AssemblyAI and ElevenLabs
         </p>
 
-        <Tabs defaultValue="stt" className="mb-8">
+        <Tabs value="text" onValueChange={() => {}} className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="stt">Speech to Text</TabsTrigger>
             <TabsTrigger value="tts">Text to Speech</TabsTrigger>

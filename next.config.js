@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // 👈 YEH MAGICAL LINE HAI
+  // output: 'export', // 👈 COMMENT OUT
   images: {
     unoptimized: true,
   },
-  trailingSlash: true,
-  skipTrailingSlashRedirect: true,
 }
 
 module.exports = nextConfig
