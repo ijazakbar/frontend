@@ -1,9 +1,6 @@
-import dynamic from 'next/dynamic'
+import ResearchContent from "@/components/ResearchContent"
 
-const ResearchContent = dynamic(
-  () => import('@/components/ResearchContent'),
-  { ssr: false }
-)
+export const dynamic = 'force-dynamic'
 
 export default function ResearchPage() {
   return <ResearchContent />

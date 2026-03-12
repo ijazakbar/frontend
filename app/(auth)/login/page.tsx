@@ -1,18 +1,7 @@
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
+import LoginContent from "@/components/LoginContent"
 
-const LoginContent = dynamic(
-  () => import('@/components/LoginContent'),
-  { 
-    ssr: false,
-    loading: () => <div className="min-h-screen flex items-center justify-center">Loading...</div>
-  }
-)
+export const dynamic = 'force-dynamic'
 
 export default function LoginPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
-      <LoginContent />
-    </Suspense>
-  )
+  return <LoginContent />
 }

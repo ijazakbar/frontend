@@ -1,18 +1,7 @@
-import dynamic from 'next/dynamic'
-import { Suspense } from 'react'
+import ImageContent from "@/components/ImageContent"
 
-const ImageContent = dynamic(
-  () => import('@/components/ImageContent'),
-  { 
-    ssr: false,
-    loading: () => <div className="container mx-auto p-6">Loading image generator...</div>
-  }
-)
+export const dynamic = 'force-dynamic'
 
 export default function ImagePage() {
-  return (
-    <Suspense fallback={<div className="container mx-auto p-6">Loading...</div>}>
-      <ImageContent />
-    </Suspense>
-  )
+  return <ImageContent />
 }
