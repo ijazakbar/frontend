@@ -46,6 +46,7 @@ export default function RegisterContent() {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',  // 👈 SIRF YEH ADD KARO
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
