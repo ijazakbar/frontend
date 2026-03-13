@@ -27,7 +27,7 @@ export default function LoginContent() {
 
     try {
       // 👇 REAL API CALL WITH CREDENTIALS
-      const response = await fetch(`${API_URL}/auth/login`, {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
