@@ -36,11 +36,11 @@ export default function LoginContent() {
   // 👇 BACKEND URL
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://pakchat-backend.onrender.com'
 
-  // 👇 Check if already logged in
+  // 👇 Check if already logged in - FIXED: Redirect to /dashboard
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      router.push('/chat')
+      router.push('/dashboard')  // 👈 YEH FIX KIA: '/chat' se '/dashboard' kia
     }
   }, [router])
 
@@ -83,12 +83,12 @@ export default function LoginContent() {
           description: "Welcome back to PakChat!",
         })
         
-        // ✅ Redirect to chat
-        router.push("/chat")
+        // ✅ FIXED: Redirect to dashboard instead of chat
+        router.push("/dashboard")  // 👈 YEH FIX KIA: '/chat' se '/dashboard' kia
         
-        // Force redirect if needed
+        // Force redirect if needed (backup)
         setTimeout(() => {
-          window.location.href = '/chat'
+          window.location.href = '/dashboard'  // 👈 YEH BHI FIX KIA
         }, 500)
       } else {
         throw new Error('No token received')
@@ -236,7 +236,7 @@ export default function LoginContent() {
             </p>
           </div>
 
-          {/* Optional: Social Login */}
+          {/* Social Login */}
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
