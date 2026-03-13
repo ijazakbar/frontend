@@ -26,12 +26,13 @@ export default function LoginContent() {
     setIsLoading(true)
 
     try {
-      // 👇 REAL API CALL
+      // 👇 REAL API CALL WITH CREDENTIALS
       const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',  // 👈 YEH ADD KARO (CORS ke liye)
         body: JSON.stringify({
           email: formData.email,
           password: formData.password,
@@ -110,7 +111,7 @@ export default function LoginContent() {
         </div>
 
         <div className="flex items-center justify-between">
-          <Link href="/auth/forgot-password" className="text-sm text-blue-600 hover:underline">
+          <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
             Forgot password?
           </Link>
         </div>
@@ -137,7 +138,7 @@ export default function LoginContent() {
       <div className="mt-6 text-center">
         <p className="text-gray-600 dark:text-gray-400">
           Don't have an account?{" "}
-          <Link href="/auth/register" className="text-blue-600 hover:underline">
+          <Link href="/register" className="text-blue-600 hover:underline">  {/* 👈 YEH CHANGE KIYA */}
             Sign up
           </Link>
         </p>
